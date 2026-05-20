@@ -1,1 +1,5 @@
-# ia-script-1.0
+# IA Scripter
+
+## Clique abaixo
+
+[🚀 Abrir IA](ia.html)
