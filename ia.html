@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IA Scripter</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#0d0d0d;
+    font-family:Arial;
+    color:white;
+}
+
+.topo{
+    background:#151515;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    color:#00ff88;
+    box-shadow:0 0 20px #000;
+}
+
+.chat{
+    padding:20px;
+    height:70vh;
+    overflow:auto;
+}
+
+.msg{
+    background:#1b1b1b;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+    white-space:pre-wrap;
+}
+
+.ia{
+    border-left:5px solid #00ff88;
+}
+
+.user{
+    border-left:5px solid #0099ff;
+}
+
+.barra{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    display:flex;
+    background:#111;
+    padding:10px;
+    box-sizing:border-box;
+}
+
+input{
+    flex:1;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#1f1f1f;
+    color:white;
+    font-size:16px;
+}
+
+button{
+    margin-left:10px;
+    border:none;
+    border-radius:12px;
+    padding:15px 25px;
+    background:#00ff88;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topo">
+IA Scripter
+</div>
+
+<div class="chat" id="chat">
+
+<div class="msg ia">
+Olá, eu sou sua IA Scripter 🚀
+</div>
+
+</div>
+
+<div class="barra">
+
+<input
+id="texto"
+placeholder="Digite algo..."
+>
+
+<button onclick="enviar()">
+Enviar
+</button>
+
+</div>
+
+<script>
+
+function enviar(){
+
+    let texto =
+    document.getElementById("texto").value;
+
+    if(texto == "") return;
+
+    let chat =
+    document.getElementById("chat");
+
+    let user =
+    document.createElement("div");
+
+    user.className =
+    "msg user";
+
+    user.innerText =
+    texto;
+
+    chat.appendChild(user);
+
+    let ia =
+    document.createElement("div");
+
+    ia.className =
+    "msg ia";
+
+    ia.innerText =
+`// Código gerado
+
+function exemplo(){
+    console.log("${texto}");
+}
+`;
+
+    setTimeout(()=>{
+        chat.appendChild(ia);
+        chat.scrollTop =
+        chat.scrollHeight;
+    },500);
+
+    document.getElementById("texto").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
